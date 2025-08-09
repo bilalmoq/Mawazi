@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mawazi — Home</title>
+    <meta
+      name="description"
+      content="Mawazi helps NGOs manage beneficiaries, baskets, and distribution records with privacy by design."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="index.html" aria-label="Mawazi Home">
+        <span class="brand-badge">M</span><span class="brand-text">Mawazi</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a class="nav-when-guest" href="login.html">Login</a>
+        <a class="nav-when-guest" href="register.html">Register</a>
+        <a class="nav-when-logged" href="dashboard.html">Dashboard</a>
+        <form
+          class="nav-when-logged"
+          action="/auth/logout"
+          method="POST"
+          style="display:none;"
+        >
+          <button class="btn" type="submit">Logout</button>
+        </form>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <h1>Mawazi — Aid distribution made simple</h1>
+        <p>
+          A lightweight platform for NGOs in Gaza to manage
+          <strong>beneficiaries</strong>, <strong>baskets</strong>, and
+          <strong>distribution logs</strong>. Each organization owns its data in
+          isolation.
+        </p>
+        <p class="cta-row">
+          <a class="btn primary nav-when-guest" href="register.html"
+            >Create Organization</a
+          >
+          <a class="btn nav-when-guest" href="login.html">Sign in</a>
+          <a class="btn primary nav-when-logged" href="dashboard.html"
+            >Go to Dashboard</a
+          >
+        </p>
+      </section>
+
+      <section aria-label="Key features" class="section">
+        <h2>Key features</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>Beneficiaries</h3>
+            <p>
+              Keep a clean, searchable list to avoid duplication and ensure
+              fairness.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Baskets</h3>
+            <p>
+              Create food/hygiene baskets with total quantities and optional
+              expiry.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Distribution Logs</h3>
+            <p>Record deliveries and track remaining stock instantly.</p>
+          </div>
+          <div class="card">
+            <h3>Privacy by Design</h3>
+            <p>Every NGO sees only its data. No cross-organization access.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container footer">
+      <small>© 2025 Mawazi • <a href="about.html">About</a></small>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

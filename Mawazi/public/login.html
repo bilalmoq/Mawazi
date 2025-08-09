@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mawazi — Login</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="index.html"
+        ><span class="brand-badge">M</span
+        ><span class="brand-text">Mawazi</span></a
+      >
+      <nav class="nav-links">
+        <a href="index.html">Home</a><a href="about.html">About</a
+        ><a href="register.html">Register</a>
+      </nav>
+    </header>
+
+    <main class="container section">
+      <h1>Sign in</h1>
+      <form
+        class="form panel"
+        action="http://localhost:3000/auth/login"
+        method="POST"
+      >
+        <label>Email</label><input name="email" type="email" required />
+        <label>Password</label
+        ><input name="password" type="password" required />
+        <div class="actions">
+          <button class="btn primary" type="submit">Sign in</button>
+        </div>
+        <p class="muted">
+          Your session will be kept by the server; no local storage.
+        </p>
+      </form>
+    </main>
+
+    <footer class="container footer"><small>© 2025 Mawazi</small></footer>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mawazi — About</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="index.html"
+        ><span class="brand-badge">M</span
+        ><span class="brand-text">Mawazi</span></a
+      >
+      <nav class="nav-links">
+        <a href="index.html">Home</a><a href="about.html">About</a>
+        <a class="nav-when-guest" href="login.html">Login</a>
+        <a class="nav-when-guest" href="register.html">Register</a>
+        <a class="nav-when-logged" href="dashboard.html">Dashboard</a>
+        <form
+          class="nav-when-logged"
+          action="/auth/logout"
+          method="POST"
+          style="display:none;"
+        >
+          <button class="btn" type="submit">Logout</button>
+        </form>
+      </nav>
+    </header>
+
+    <main class="container section">
+      <h1>About Mawazi</h1>
+      <div class="grid">
+        <div class="card">
+          <h3>Mission</h3>
+          <p>
+            Provide NGOs a simple tool to organize aid fairly and efficiently.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Vision</h3>
+          <p>
+            Timely support for every family with minimal friction and maximum
+            clarity.
+          </p>
+        </div>
+        <div class="card">
+          <h3>How it works</h3>
+          <p>
+            Organizations register, add beneficiaries, create baskets, and log
+            distributions.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Privacy</h3>
+          <p>Each NGO sees only its own data (multi-tenant separation).</p>
+        </div>
+      </div>
+
+      <!-- Owner Section -->
+      <section class="section" style="margin-top: 2rem;">
+        <h2>Owner</h2>
+        <div class="card">
+          <p><strong>Name:</strong> Bilal Fahmi Al-Muqayed</p>
+          <p>
+            <strong>Specialization:</strong> Computer Engineering and
+            Intelligent Systems
+          </p>
+          <p>
+            I am the solo developer of Mawazi, responsible for everything from
+            planning and design to coding and testing. My goal is to use my
+            skills to create solutions that have a real impact, especially
+            during the humanitarian crisis in Gaza. Through Mawazi, I aim to
+            help NGOs and charities deliver aid faster, more fairly, and more
+            efficiently.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container footer"><small>© 2025 Mawazi</small></footer>
+    <script src="app.js"></script>
+  </body>
+</html>

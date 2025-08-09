@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mawazi — Baskets</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="index.html"
+        ><span class="brand-badge">M</span
+        ><span class="brand-text">Mawazi</span></a
+      >
+      <nav class="nav-links">
+        <a href="dashboard.html">Dashboard</a
+        ><a href="beneficiaries.html">Beneficiaries</a>
+        <a href="packages.html">Baskets</a
+        ><a href="distribute.html">Distribute</a>
+        <form action="/auth/logout" method="POST">
+          <button class="btn" type="submit">Logout</button>
+        </form>
+      </nav>
+    </header>
+
+    <main class="container section">
+      <h1>Baskets (Vouchers)</h1>
+      <div class="grid">
+        <form
+          class="form panel"
+          action="http://localhost:3000/packages"
+          method="POST"
+        >
+          <h3>Create basket</h3>
+          <label>Title</label><input name="title" required />
+          <label>Type</label>
+          <select name="type">
+            <option value="food">Food</option>
+            <option value="cleaning">Hygiene / Cleaning</option>
+            <option value="other">Other</option>
+          </select>
+          <label>Items (comma-separated)</label
+          ><input name="items" placeholder="Rice 5kg, Oil 2L, ..." />
+          <label>Total quantity</label
+          ><input name="totalQuantity" type="number" min="1" required />
+          <label>Expires at (optional)</label
+          ><input name="expiresAt" type="date" /> <label>Notes</label
+          ><textarea name="notes"></textarea>
+          <div class="actions"><button class="btn primary">Save</button></div>
+        </form>
+
+        <div class="panel">
+          <h3>List / Search</h3>
+          <form method="GET" action="http://localhost:3000/packages">
+            <input class="mono" name="q" placeholder="Search by title…" />
+            <div class="actions"><button class="btn">Search</button></div>
+          </form>
+          <p class="muted">Results will be shown as JSON for now.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="container footer"><small>© 2025 Mawazi</small></footer>
+    <script src="app.js"></script>
+  </body>
+</html>
