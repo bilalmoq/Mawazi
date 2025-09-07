@@ -3,20 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mawazi — Dashboard</title>
+    <title>Mawazi — Distribute</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="nav">
-      <a class="brand" href="index.html">
-        <span class="brand-badge">M</span>
-        <span class="brand-text">Mawazi</span>
-      </a>
+      <a class="brand" href="index.html"
+        ><span class="brand-badge">M</span
+        ><span class="brand-text">Mawazi</span></a
+      >
       <nav class="nav-links">
-        <a href="dashboard.html">Dashboard</a>
-        <a href="beneficiaries.html">Beneficiaries</a>
-        <a href="packages.html">Baskets</a>
-        <a href="distribute.html">Distribute</a>
+        <a href="dashboard.html">Dashboard</a
+        ><a href="beneficiaries.html">Beneficiaries</a>
+        <a href="packages.html">Baskets</a
+        ><a href="distribute.html">Distribute</a>
         <form action="/auth/logout" method="POST">
           <button class="btn" type="submit">Logout</button>
         </form>
@@ -24,44 +24,25 @@
     </header>
 
     <main class="container section">
-      <h1>Overview</h1>
-      <div class="cards">
-        <div class="card">
-          <h3>Beneficiaries</h3>
-          <p class="mono" id="stat-beneficiaries">—</p>
-        </div>
-        <div class="card">
-          <h3>Baskets</h3>
-          <p class="mono" id="stat-baskets">—</p>
-        </div>
-        <div class="card">
-          <h3>Distributions</h3>
-          <p class="mono" id="stat-distributions">—</p>
-        </div>
-      </div>
-
-      <h2>Recent activity</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Beneficiary</th>
-            <th>Basket</th>
-            <th>Qty</th>
-          </tr>
-        </thead>
-        <tbody id="recent-activity">
-          <tr>
-            <td colspan="4">Loading…</td>
-          </tr>
-        </tbody>
-      </table>
+      <h1>Record a distribution</h1>
+      <form
+        class="form panel"
+        action="http://localhost:3000/distributions"
+        method="POST"
+      >
+        <label>Beneficiary ID</label><input name="beneficiaryId" required />
+        <label>Basket ID</label><input name="packageId" required />
+        <label>Quantity</label
+        ><input name="quantity" type="number" min="1" value="1" required />
+        <label>Delivered by (optional)</label><input name="deliveredBy" />
+        <div class="actions"><button class="btn primary">Save</button></div>
+        <p class="muted">
+          IDs will be selectable once we wire the lists to the API.
+        </p>
+      </form>
     </main>
 
-    <footer class="container footer">
-      <small>© 2025 Mawazi</small>
-    </footer>
-
+    <footer class="container footer"><small>© 2025 Mawazi</small></footer>
     <script src="app.js"></script>
   </body>
 </html>
