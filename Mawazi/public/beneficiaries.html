@@ -8,15 +8,15 @@
   </head>
   <body>
     <header class="nav">
-      <a class="brand" href="index.html"
-        ><span class="brand-badge">M</span
-        ><span class="brand-text">Mawazi</span></a
-      >
-      <nav class="nav-links">
-        <a href="dashboard.html">Dashboard</a
-        ><a href="beneficiaries.html">Beneficiaries</a>
-        <a href="packages.html">Baskets</a
-        ><a href="distribute.html">Distribute</a>
+      <a class="brand" href="index.html">
+        <span class="brand-badge">M</span>
+        <span class="brand-text">Mawazi</span>
+      </a>
+      <nav class="nav-links nav-when-logged">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="beneficiaries.html">Beneficiaries</a>
+        <a href="packages.html">Baskets</a>
+        <a href="distribute.html">Distribute</a>
         <form action="/auth/logout" method="POST">
           <button class="btn" type="submit">Logout</button>
         </form>
@@ -26,33 +26,42 @@
     <main class="container section">
       <h1>Beneficiaries</h1>
       <div class="grid">
-        <form
-          class="form panel"
-          action="http://localhost:3000/beneficiaries"
-          method="POST"
-        >
+        <form class="form panel" action="/beneficiaries" method="POST">
           <h3>Add beneficiary</h3>
           <label>Full name</label><input name="name" required />
-          <label>ID number </label><input name="idNo" /> <label>Phone</label
+          <label>ID number</label><input name="idNo" /> <label>Phone</label
           ><input name="phone" /> <label>Address / Area</label
-          ><input name="address" /> <label>Family size</label
-          ><input name="familySize" type="number" min="1" value="1" />
+          ><input name="address" />
+          <label>Family size</label>
+          <input name="familySize" type="number" min="1" value="1" />
           <label>Notes</label><textarea name="notes"></textarea>
           <div class="actions"><button class="btn primary">Save</button></div>
         </form>
 
         <div class="panel">
           <h3>Search</h3>
-          <form method="GET" action="http://localhost:3000/beneficiaries">
-            <input class="mono" name="q" placeholder="Type a name…" />
-            <div class="actions"><button class="btn">Search</button></div>
+          <form id="beneficiarySearchForm">
+            <input
+              class="mono"
+              name="q"
+              id="beneficiarySearchInput"
+              placeholder="Type a name…"
+            />
+            <div class="actions">
+              <button type="submit" class="btn">Search</button>
+            </div>
           </form>
-          <p class="muted">Results will be shown as JSON for now.</p>
+          <div id="beneficiaryResults">
+            <p class="muted">Search results will appear here.</p>
+          </div>
         </div>
       </div>
     </main>
 
-    <footer class="container footer"><small>© 2025 Mawazi</small></footer>
+    <footer class="container footer">
+      <small>© 2025 Mawazi</small>
+    </footer>
+
     <script src="app.js"></script>
   </body>
 </html>
