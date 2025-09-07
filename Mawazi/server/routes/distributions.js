@@ -30,4 +30,15 @@ router.post("/", requireAuth, async (req, res) => {
   res.redirect("/distribute.html");
 });
 
+router.get("/recent", requireAuth, async (req, res) => {
+  const orgId = req.session.user.orgId;
+  const recent = await Distribution.find({ orgId })
+    .sort({ createdAt: -1 })
+    .limit(5)
+    .populate("beneficiary")
+    .populate("package");
+
+  res.json(recent);
+});
+
 module.exports = router;
