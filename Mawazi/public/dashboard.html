@@ -8,15 +8,15 @@
   </head>
   <body>
     <header class="nav">
-      <a class="brand" href="index.html"
-        ><span class="brand-badge">M</span
-        ><span class="brand-text">Mawazi</span></a
-      >
+      <a class="brand" href="index.html">
+        <span class="brand-badge">M</span>
+        <span class="brand-text">Mawazi</span>
+      </a>
       <nav class="nav-links">
-        <a href="dashboard.html">Dashboard</a
-        ><a href="beneficiaries.html">Beneficiaries</a>
-        <a href="packages.html">Baskets</a
-        ><a href="distribute.html">Distribute</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="beneficiaries.html">Beneficiaries</a>
+        <a href="packages.html">Baskets</a>
+        <a href="distribute.html">Distribute</a>
         <form action="/auth/logout" method="POST">
           <button class="btn" type="submit">Logout</button>
         </form>
@@ -50,27 +50,18 @@
             <th>Qty</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="recent-activity">
           <tr>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
+            <td colspan="4">Loading…</td>
           </tr>
         </tbody>
       </table>
     </main>
-    <script>
-      document.addEventListener('DOMContentLoaded', async () => {
-        const res = await fetch('http://localhost:3000/stats', { credentials: 'include' });
-        const stats = await res.json();
-        document.getElementById('stat-beneficiaries').textContent = stats.beneficiariesCount;
-        document.getElementById('stat-baskets').textContent = stats.packagesCount;
-        document.getElementById('stat-distributions').textContent = stats.distributionsCount;
-      });
-    </script>
 
-    <footer class="container footer"><small>© 2025 Mawazi</small></footer>
+    <footer class="container footer">
+      <small>© 2025 Mawazi</small>
+    </footer>
+
     <script src="app.js"></script>
   </body>
 </html>
