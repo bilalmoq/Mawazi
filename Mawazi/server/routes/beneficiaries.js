@@ -1,46 +1,45 @@
 const express = require("express");
-const requireAuth = require("../middleware/requireAuth");
-const Distribution = require("../models/Distribution");
 const Beneficiary = require("../models/Beneficiary");
-const Package = require("../models/Package");
 
 const router = express.Router();
 
-router.post("/", requireAuth, async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const orgId = req.session.user.orgId;
-    const { idNo, packageId, quantity, deliveredBy } = req.body;
+    const { name, idNo, phone, address, familySize, notes } = req.body;
 
-    const ben = await Beneficiary.findOne({ orgId, idNo: (idNo || "").trim() });
-    if (!ben) return res.status(404).send("Beneficiary not found");
-
-    const pkg = await Package.findOne({ _id: packageId, orgId });
-    if (!pkg) return res.status(404).send("Package not found");
-
-    const qty = quantity ? Number(quantity) : 1;
-    const remaining = pkg.totalQuantity - pkg.distributed;
-    if (qty > remaining) return res.status(400).send("Not enough quantity");
-
-    await Distribution.create({
+    const newBeneficiary = new Beneficiary({
       orgId,
-      beneficiaryId: ben._id,
-      packageId,
-      quantity: qty,
-      deliveredBy,
+      name,
+      idNo,
+      phone,
+      address,
+      familySize: familySize ? Number(familySize) : 1,
+      notes,
     });
 
-    pkg.distributed += qty;
-    await pkg.save();
-
-    await Beneficiary.updateOne(
-      { _id: ben._id },
-      { $push: { basketsReceived: { packageId, date: new Date() } } }
-    );
-
-    res.redirect("/distribute.html");
+    await newBeneficiary.save();
+    res.redirect("/beneficiaries.html");
   } catch (err) {
     console.error(err);
-    res.status(500).send("Server error");
+    res.status(500).send("Error adding beneficiary");
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    const orgId = req.session.user.orgId;
+    const query = req.query.q || "";
+
+    const results = await Beneficiary.find({
+      orgId,
+      name: { $regex: query, $options: "i" },
+    });
+
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error searching beneficiaries");
   }
 });
 
